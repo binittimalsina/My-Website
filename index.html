@@ -1016,23 +1016,7 @@
     );
   });
 
-  // Chure regional inventory band
-  var chureBand = [
-    [26.55,87.85],[26.70,87.30],[26.85,86.60],[27.05,85.70],[27.30,84.70],
-    [27.55,83.80],[27.75,82.90],[28.05,81.90],[28.35,80.90],[28.65,80.30],
-    [28.45,80.45],[28.15,81.35],[27.85,82.30],[27.55,83.20],[27.30,84.10],
-    [27.05,85.00],[26.85,85.90],[26.65,86.90],[26.45,87.60]
-  ];
-  var band = L.polygon(chureBand, {
-    color:'#55703c', weight:1, fillColor:'#7a8f6b', fillOpacity:0.18, opacity:0.55, dashArray:'2 5'
-  }).addTo(map);
-  band.bindPopup(
-    '<span class="wp-meta">Regional Inventory · Chure Range, multiple Terai districts</span>' +
-    '<p class="wp-title">Wetlands of Chure (Siwalik Hills)</p>' +
-    '<p class="wp-body">District-by-district inventory mapping of wetlands across the Chure range for the Ministry of Forests and Environment, covering status, threat and ecological assessment (2025).</p>' +
-    '<a class="wp-link" href="chure_wetland_map.jpg" target="_blank" rel="noopener">View full GIS distribution map →</a>'
-  );
-})();
+ 
 </script>
 
 <script>
