@@ -323,26 +323,45 @@
   .wp-link{font-size:0.78rem; font-weight:600;}
 
   /* field photo banner */
-  .field-photo{
-    position:relative; height:54vh; min-height:340px; max-height:560px;
-    overflow:hidden;
-  }
-  .field-photo img{
-    width:100%; height:100%; object-fit:cover; object-position:center 35%;
-    display:block;
-  }
-  .field-photo-scrim{
-    position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(18,63,74,0.15) 0%, rgba(18,63,74,0.05) 40%, rgba(18,63,74,0.85) 100%);
-  }
-  .field-photo-caption{
-    position:absolute; left:0; right:0; bottom:0; padding:26px 28px 22px;
-    max-width:var(--max); margin:0 auto;
-  }
-  .field-photo-caption p{
-    color:var(--paper); font-family:'Newsreader', serif; font-size:1.15rem;
-    margin:0; max-width:40ch;
-  }
+  /* Keep all your original .field-photo CSS rules exactly as they are */
+.field-photo {
+  position: relative; height: 54vh; min-height: 340px; max-height: 560px;
+  overflow: hidden;
+}
+
+/* Add these new rules to manage the sliding cross-fade */
+.field-photo-slide {
+  position: absolute; inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out; /* Smooth 1-second transition */
+  z-index: 1;
+}
+
+.field-photo-slide.active {
+  opacity: 1;
+  z-index: 2; /* Brings the active slide to the front */
+}
+
+/* Update your original image rules to target the slide structure */
+.field-photo-slide img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center 35%;
+  display: block;
+}
+
+.field-photo-scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(18,63,74,0.15) 0%, rgba(18,63,74,0.05) 40%, rgba(18,63,74,0.85) 100%);
+}
+
+.field-photo-caption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 28px 22px;
+  max-width: var(--max); margin: 0 auto;
+}
+
+.field-photo-caption p {
+  color: var(--paper); font-family: 'Newsreader', serif; font-size: 1.15rem;
+  margin: 0; max-width: 40ch;
+}
 
   /* translucent bathymetric background (fixed, shows through hero/about/research-focus/experience) */
   .depth-bg{
@@ -434,11 +453,24 @@
 </div>
 
 <div class="field-photo">
-  <img src="fieldwork-bathymetry.jpg"; alt="Binit Timalsina conducting a bathymetric survey by boat on a misty Himalayan lake">
-  <div class="field-photo-scrim"></div>
-  <div class="field-photo-caption">
-    <span class="eyebrow" style="margin-bottom:6px; color:#cfe0e2;">In the Field</span>
-    <p>Sonar depth profiling in Mai Pokhari, a Ramsar Site of Mid-hill of Nepal.</p>
+  <!-- Slide 1 -->
+  <div class="field-photo-slide active">
+    <img src="fieldwork-bathymetry.jpg" alt="Binit Timalsina conducting a bathymetric survey by boat on a misty Himalayan lake">
+    <div class="field-photo-scrim"></div>
+    <div class="field-photo-caption">
+      <span class="eyebrow" style="margin-bottom:6px; color:#cfe0e2;">In the Field</span>
+      <p>Sonar depth profiling in Mai Pokhari, a Ramsar Site of Mid-hill of Nepal.</p>
+    </div>
+  </div>
+
+  <!-- Slide 2 -->
+  <div class="field-photo-slide">
+    <img src="aaa.jpg" alt="Description of second photo">
+    <div class="field-photo-scrim"></div>
+    <div class="field-photo-caption">
+      <span class="eyebrow" style="margin-bottom:6px; color:#cfe0e2;">In the Field</span>
+      <p>Your second image caption goes here.</p>
+    </div>
   </div>
 </div>
 
