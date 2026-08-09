@@ -322,45 +322,70 @@
   .wp-body{font-size:0.85rem; color:var(--ink-soft); margin:0 0 8px; line-height:1.5;}
   .wp-link{font-size:0.78rem; font-weight:600;}
 
-  /* field photo banner */
-  /* Keep all your original .field-photo CSS rules exactly as they are */
+
+/* ---------- Field Photo Banner Slider ---------- */
+
 .field-photo {
-  position: relative; height: 54vh; min-height: 340px; max-height: 560px;
+  position: relative; 
+  height: 54vh; 
+  min-height: 340px; 
+  max-height: 560px;
   overflow: hidden;
+  background-color: var(--bg); /* Prevents a white flash during load */
 }
 
-/* Add these new rules to manage the sliding cross-fade */
+/* Base slide container: totally hidden by default */
 .field-photo-slide {
-  position: absolute; inset: 0;
+  position: absolute; 
+  inset: 0;
   opacity: 0;
-  transition: opacity 1s ease-in-out; /* Smooth 1-second transition */
+  visibility: hidden; /* Prevents hidden text from being selectable */
+  transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
   z-index: 1;
 }
 
+/* Active slide container: faded in and brought to life */
 .field-photo-slide.active {
   opacity: 1;
-  z-index: 2; /* Brings the active slide to the front */
+  visibility: visible;
+  z-index: 2;
 }
 
-/* Update your original image rules to target the slide structure */
+/* Target images properly inside their slide wrappers */
 .field-photo-slide img {
-  width: 100%; height: 100%; object-fit: cover; object-position: center 35%;
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  object-position: center 35%;
   display: block;
 }
 
+/* Dark gradient overlay: placed on top of the image inside the active slide */
 .field-photo-scrim {
-  position: absolute; inset: 0;
+  position: absolute; 
+  inset: 0;
   background: linear-gradient(180deg, rgba(18,63,74,0.15) 0%, rgba(18,63,74,0.05) 40%, rgba(18,63,74,0.85) 100%);
+  z-index: 3; /* Always sits cleanly over the active image */
 }
 
+/* Caption wrapper: pushed above the scrim layer */
 .field-photo-caption {
-  position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 28px 22px;
-  max-width: var(--max); margin: 0 auto;
+  position: absolute; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  padding: 26px 28px 22px;
+  max-width: var(--max); 
+  margin: 0 auto;
+  z-index: 4; /* Pushed to the absolute top layer */
 }
 
 .field-photo-caption p {
-  color: var(--paper); font-family: 'Newsreader', serif; font-size: 1.15rem;
-  margin: 0; max-width: 40ch;
+  color: var(--paper); 
+  font-family: 'Newsreader', serif; 
+  font-size: 1.15rem;
+  margin: 0; 
+  max-width: 40ch;
 }
 
   /* translucent bathymetric background (fixed, shows through hero/about/research-focus/experience) */
